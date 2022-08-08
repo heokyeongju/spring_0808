@@ -3,6 +3,9 @@ package com.ll.exam.sbb;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Controller
 public class MainController {
     private int i=-1;
@@ -58,5 +61,20 @@ public class MainController {
     public int showIncrease() {
 
         return ++i;
+    }
+    //gugudan?dan=4&limit=9
+    @GetMapping("/gugudan")
+    @ResponseBody
+    public String showGugudan(Integer dan, Integer limit) {
+        if(limit == null){
+            limit = 9;
+        }
+        if(dan == null){
+            dan = 9;
+        }
+        Integer finalDan = dan; // Integer는 객체라서 불변임을 명시
+        return IntStream.range(1,limit)
+                .mapToObj(i -> "%d * %d = %d".formatted(finalDan,i,finalDan *i ))
+                .collect(Collectors.joining("<br/>"));
     }
 }
