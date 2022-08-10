@@ -1,12 +1,9 @@
 package com.ll.exam.sbb;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +23,7 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList;
 }
