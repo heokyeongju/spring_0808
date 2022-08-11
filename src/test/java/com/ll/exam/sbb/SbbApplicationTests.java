@@ -34,8 +34,9 @@ class SbbApplicationTests {
 		q2.setContent("id는 자동으로 생성되나요?");
 		q2.setCreateDate(LocalDateTime.now());
 		questionRepository.save(q2);
-
+		questionRepository.disableForeignKeyChecks();
 		questionRepository.truncate();
+		questionRepository.enableForeignKeyChecks();
 	}
 
 	@Test

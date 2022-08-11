@@ -21,7 +21,5 @@ public class Answer {
 
     // answer : many, question : one
     @ManyToOne
-    // answer 테이블의 question_id 칼럼에 걸려있던 foreign key 제거
-    @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Question question;
 }
