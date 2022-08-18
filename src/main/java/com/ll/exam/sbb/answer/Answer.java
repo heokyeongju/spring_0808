@@ -1,5 +1,6 @@
-package com.ll.exam.sbb;
+package com.ll.exam.sbb.answer;
 
+import com.ll.exam.sbb.question.Question;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,14 +13,13 @@ import java.time.LocalDateTime;
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(columnDefinition = "TEXT")
     private String content;
 
     private LocalDateTime createDate;
 
-    // answer : many, question : one
     @ManyToOne
     private Question question;
 }
